@@ -1,5 +1,6 @@
 import requests
 
+
 class Monitorador:
     """
         Verificar como vou coletar os dados

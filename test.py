@@ -7,6 +7,7 @@ vamos tentar usar 'baby steps' ao maximo.
 """
 import unittest
 from utils.monitoradores import Monitorador
+from utils.dados import ArquivoDeDados
 
 class TestMonitorador(unittest.TestCase):
     """
@@ -30,6 +31,29 @@ class TestMonitorador(unittest.TestCase):
         m = Monitorador('pixies', 'bee')
         release = m.consulta_ao_repositorio()
         self.assertEqual(release, 'releases')
+
+# -------------------------------------------------------------------------
+
+class TestArquivoDeDado(unittest.TestCase):
+    """
+      Se o arquvio existe - criar
+      Vai escrever no arquivo - e salvar
+    """
+
+    def test_se_o_diretorio_exist(self):
+        """
+           Verificar se este arquivo existe
+           /tmp/monitorador/usuario/repositio.db
+        """
+        ar_dados = ArquivoDeDados('pixies', 'devinf')
+        arquivo = ar_dados.diretorio_existe()
+        if self.assertTrue(arquivo):
+            return True
+        
+    def test_se_arquivo_existe(self):
+        ar_dados = ArquivoDeDados('pixies', 'devinf')
+        self.assertTrue(ar_dados.arquivo_existe())
+
 
 
 if __name__ == '__main__':
